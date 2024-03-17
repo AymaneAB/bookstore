@@ -1,9 +1,9 @@
 @extends('layouts.admin.base')
 
 @section('content')
-<div class="container">
-    <h2>Add New Product</h2>
-
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Add New Product</h1>
+</div>
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -20,7 +20,7 @@
     </div>
     @endif
 
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('dashboard.products.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="name">Product Name:</label>
@@ -48,7 +48,6 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Add Product</button>
+        <button type="submit" class="btn btn-primary mt-2">Add Product</button>
     </form>
-</div>
 @endsection

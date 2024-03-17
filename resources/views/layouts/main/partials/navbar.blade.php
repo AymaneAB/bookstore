@@ -10,7 +10,7 @@
           <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('products.create') }}">Add Product</a>
+          <a class="nav-link" href="{{ route('dashboard.products.create') }}">Add Product</a>
         </li>
         <!-- Add more navigation items here -->
       </ul>
