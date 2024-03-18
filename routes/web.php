@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GuestOrderController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,11 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    // orders
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::patch('/orders/{id}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
+
 });
 
 Route::get('/guest-order/create', [GuestOrderController::class, 'create'])->name('guest-order.create');

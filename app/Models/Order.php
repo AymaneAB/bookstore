@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['order_date'];
+    protected $fillable = ['order_date', 'user_id', 'total_price', 'status'];
     // Order has many OrderItems
     public function orderItems()
     {
@@ -19,12 +19,22 @@ class Order extends Model
     // Orders belong to many Products (through OrderItem)
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'order_items');
+        return $this->belongsToMany(Product::class, 'order_items')->withPivot(['quantity', 'price_at_purchase']);
     }
+
+    // public function products()
+    // {
+    //     return $this->belongsToMany(Product::class)->withPivot('quantity');
+    // }
 
     // Order has one GuestOrder
     public function guestOrder()
     {
         return $this->hasOne(GuestOrder::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
