@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('dashboard.products.create') }}">Add Product</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('cart.view') }}">cart</a>
+          </li>
         <!-- Add more navigation items here -->
       </ul>
     </div>

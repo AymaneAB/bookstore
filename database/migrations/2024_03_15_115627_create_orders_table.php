@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->dateTime('order_date');
+            $table->timestamp('order_date');
             $table->decimal('total_price', 8, 2)->nullable();
             $table->enum('status', ['pending', 'processing', 'completed', 'shipped', 'cancelled'])->default('pending');
             $table->timestamps();

@@ -8,10 +8,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->routeIs('dashboard.orders.*') ? 'active' : '' }}" href="{{ route('dashboard.orders.index') }}">
-            <span data-feather="file"></span>
-            Orders</a>
+            <a class="nav-link {{ request()->routeIs('dashboard.orders.*') ? 'active' : '' }}" href="{{ route('dashboard.orders.index') }}">
+              <span data-feather="file"></span>
+              Orders</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('dashboard.guest-orders.*') ? 'active' : '' }}" href="{{ route('dashboard.guest-orders.index') }}">
+              <span data-feather="file-text"></span>
+              guest orders</a>
+          </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('dashboard.categories.*') ? 'active' : '' }}" href="{{ route('dashboard.categories.index') }}">
               <span data-feather="list"></span>

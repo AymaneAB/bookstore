@@ -7,7 +7,8 @@
 <p><strong>Order ID:</strong> {{ $order->id }}</p>
 <p><strong>Status:</strong> {{ $order->status }}</p>
 <p><strong>Order Date:</strong> {{ $order->created_at->toFormattedDateString() }}</p>
-<p><strong>Customer Name:</strong> {{ $order->user->name ?? 'N/A' }}</p> {{-- Check if there is a user relationship --}}
+<p><strong>Customer Name:</strong> {{ $order->user->name ?? 'N/A' }}</p>
+<p><strong>Total</strong>: {{$order->total_price }} (DH)</p>
 <h4>Products in this Order:</h4>
 <table class="table">
     <thead>

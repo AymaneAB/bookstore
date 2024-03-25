@@ -56,7 +56,7 @@
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->user->name }}</td> {{-- Adjust according to your database structure --}}
-                    <td>{{ $order->total }}</td>
+                    <td>{{ $order->total_price }}</td>
                     <td>{{ $order->created_at->format('Y-m-d') }}</td>
                     <td>
                         <form action="{{ route('dashboard.orders.changeStatus', $order->id) }}" method="POST">

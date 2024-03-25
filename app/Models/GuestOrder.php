@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class GuestOrder extends Model
 {
     use HasFactory;
-    // GuestOrder belongs to Order
     protected $fillable = ["name", "email", "phone", "address", "product_requests", "order_id"];
     public function order()
     {

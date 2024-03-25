@@ -1,19 +1,20 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GuestOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureUserIsSeller;
+use App\Http\Middleware\EnsureUserIsLibrarian;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-
-
-Route::prefix('dashboard')->name('dashboard.')->group(function () {
+Route::prefix('dashboard')->name('dashboard.')->middleware(EnsureUserIsSeller::class)->group(function () {
     // products
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
@@ -33,7 +34,29 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
     Route::patch('/orders/{id}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
 
+
+    // guest orders
+    Route::get('/guest-orders', [GuestOrderController::class, 'index'])->name('guest-orders.index');
+    Route::get('/guest-orders/{id}/edit', [GuestOrderController::class, 'edit'])->name('guest-orders.edit');
+    Route::delete('/guest-orders/{id}', [GuestOrderController::class, 'destroy'])->name('guest-orders.destroy');
+    Route::put('/guest-orders/{id}', [GuestOrderController::class, 'update'])->name('guest-orders.update');
 });
+
 
 Route::get('/guest-order/create', [GuestOrderController::class, 'create'])->name('guest-order.create');
 Route::post('/guest-order/store', [GuestOrderController::class, 'store'])->name('guest-order.store');
+
+Route::post('/orders/store', [OrderController::class, 'store'])->middleware('auth')->name('orders.store')->middleware(EnsureUserIsLibrarian::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+
+

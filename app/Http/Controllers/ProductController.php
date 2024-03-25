@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\URL;
 
 use Illuminate\Http\Request;
 
@@ -22,13 +23,20 @@ class ProductController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
-        $products = $query->orderBy('created_at', 'desc')->paginate(10); // You can change the number of items per page
+        $products = $query->orderBy('created_at', 'desc')->paginate(10);
+        $currentPath = $request->path();
+        $view = 'products';
 
-        return view('dashboard.products.index', compact('products', 'categories'));
+        if (str_contains($currentPath, 'dashboard/products')) {
+            $view = 'dashboard.products.index';
+        }
+
+        return view($view, compact('products', 'categories'));
+        ;
     }
     public function create()
     {
-        $categories = Category::all(); // Make sure to add use App\Models\Category; at the top
+        $categories = Category::all();
         return view('dashboard.products.create', compact('categories'));
     }
 
@@ -52,7 +60,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $categories = Category::all(); // Assuming you have categories to select from
+        $categories = Category::all();
 
         return view('dashboard.products.edit', compact('product', 'categories'));
     }
@@ -78,7 +86,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        // Redirect back to the same page with a success message
+
         return redirect()->route('dashboard.products.index')->with('success', 'Product deleted successfully!');
     }
 }
