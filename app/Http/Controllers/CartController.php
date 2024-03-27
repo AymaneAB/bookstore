@@ -23,7 +23,10 @@ class CartController extends Controller
             ];
         }
         $minutes = 7 * 24 * 60;
-        return redirect()->back()->withCookie('cart', json_encode($cart), $minutes);
+        //return redirect()->back()->withCookie('cart', json_encode($cart), $minutes);
+        return redirect()->back()
+            ->withCookie('cart', json_encode($cart), $minutes)
+            ->with('success', 'Cart updated successfully.');
     }
 
     private function getCartFromCookie()
@@ -35,7 +38,19 @@ class CartController extends Controller
     public function viewCart()
     {
         $cart = $this->getCartFromCookie();
-        return view('cart', compact('cart'));
+
+        // Initialize total price variable
+        $totalPrice = 0;
+
+        // Check if cart is not empty
+        if (!empty ($cart)) {
+            // Iterate over each item in the cart
+            foreach ($cart as $item) {
+                // Add the price of each item to the total price
+                $totalPrice += $item['price'] * $item['quantity'];
+            }
+        }
+        return view('cart', compact('cart', 'totalPrice'));
     }
 
     public function removeFromCart(Request $request, $productId)

@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureUserIsSeller;
 use App\Http\Middleware\EnsureUserIsLibrarian;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::prefix('dashboard')->name('dashboard.')->middleware(EnsureUserIsSeller::class)->group(function () {
     // products
@@ -50,7 +46,7 @@ Route::post('/orders/store', [OrderController::class, 'store'])->middleware('aut
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');

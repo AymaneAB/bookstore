@@ -1,13 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.main.base')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Register</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+    <div class="row justify-content-center mt-150 mb-150">
+        <div class="col-md-5">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
+                <div class="card-body my-5">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -73,5 +83,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
