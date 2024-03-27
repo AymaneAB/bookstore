@@ -15,9 +15,10 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="{{ request()->routeIs('home') ? 'current-list-item' : '' }}"><a href="{{route("products")}}">Home</a></li>
+								<li class="{{ request()->routeIs('home') ? 'current-list-item' : '' }}"><a href="{{route("home")}}">Home</a></li>
                                 <li class="{{ request()->routeIs('products') ? 'current-list-item' : '' }}"><a href="{{route("products")}}">products</a></li>
 								<li><a href="contact.html">Contact</a></li>
+                                <li class="{{ request()->routeIs('guest-order.create') ? 'current-list-item' : '' }}"><a href="{{route("guest-order.create")}}">order</a></li>
 								<li>
 									<div class="header-icons">
 										<a class="shopping-cart" href="{{route("cart.view")}}"><i class="fas fa-shopping-cart"></i></a>
