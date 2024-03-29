@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
@@ -68,14 +69,19 @@ class OrderController extends Controller
     {
         $cart = Cookie::get('cart');
         $cart = $cart ? json_decode($cart, true) : [];
-
+//dd($cart);
         // Check if cart is not empty
         if ($cart) {
             // Create new order
+            $totalPrice = 0;
+foreach ($cart as $item) {
+    $totalPrice += $item['price'] * $item['quantity'];
+}
+
             $order = new Order();
             $order->user_id = Auth::id(); // or null if guest
             $order->order_date = now();
-            $order->total_price = array_sum(array_column($cart, 'price')); // This is a simplistic way to calculate total price
+            $order->total_price = $totalPrice;
             $order->status = 'pending'; // default status
             $order->save();
 
@@ -87,13 +93,20 @@ class OrderController extends Controller
                 $item->quantity = $details['quantity'];
                 $item->price_at_purchase = $details['price']; // Assuming this is the total price for all units of this product
                 $item->save();
+                // Update product stock quantity
+                $product = Product::find($productId);
+                if ($product) {
+                    $product->quantity -= $details['quantity'];
+                    $product->save();
+                }
             }
 
             // Clear the cart
-            Cookie::forget('cart');
-
-            // Redirect with success message
-            return redirect()->route('cart.view')->with('success', 'Order placed successfully!');
+            // Prepare a response to clear the cart
+            $response = redirect()->route('cart.view')->with('success', 'Order placed successfully!');
+            // Attach a cookie removal to that response
+            $cookie = Cookie::forget('cart');
+            return $response->withCookie($cookie);
         }
 
         // Redirect back if the cart is empty

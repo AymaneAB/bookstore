@@ -1,6 +1,48 @@
 @extends('layouts.main.base')
 
 @section('content')
+<style>
+    .breadcrumb-section {
+        background-color: #38419D;
+        padding: 50px 0;
+    }
+
+    .card {
+        border: 1px solid #38419D;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background-color: #38419D;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn-primary:hover {
+        background-color: #38419D;
+    }
+</style>
 <div class="breadcrumb-section breadcrumb-bg">
     <div class="container">
         <div class="row">

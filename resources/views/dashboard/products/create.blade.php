@@ -20,7 +20,7 @@
     </div>
     @endif
 
-    <form action="{{ route('dashboard.products.store') }}" method="POST">
+    <form action="{{ route('dashboard.products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">Product Name:</label>
@@ -38,6 +38,12 @@
             <label for="quantity">Stock Quantity:</label>
             <input type="number" class="form-control" id="quantity" name="quantity" required>
         </div>
+
+        <div class="form-group">
+            <label for="image_url">Product Image:</label>
+            <input type="file" name="image_url" id="image_url" required accept="image/*">
+        </div>
+        
         <div class="form-group">
             <label for="category_id">Category:</label>
             <select class="form-control" id="category_id" name="category_id">

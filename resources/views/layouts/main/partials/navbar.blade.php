@@ -7,7 +7,7 @@
 						<!-- logo -->
 						<div class="site-logo">
 							<a href="index.html">
-								<img src="assets/img/logo.png" alt="">
+								<img src="{{asset ('img/logo.png')}}" alt="">
 							</a>
 						</div>
 						<!-- logo -->
@@ -16,9 +16,9 @@
 						<nav class="main-menu">
 							<ul>
 								<li class="{{ request()->routeIs('home') ? 'current-list-item' : '' }}"><a href="{{route("home")}}">Home</a></li>
-                                <li class="{{ request()->routeIs('products') ? 'current-list-item' : '' }}"><a href="{{route("products")}}">products</a></li>
-								<li><a href="contact.html">Contact</a></li>
-                                <li class="{{ request()->routeIs('guest-order.create') ? 'current-list-item' : '' }}"><a href="{{route("guest-order.create")}}">order</a></li>
+                                <li class="{{ request()->routeIs('products') ? 'current-list-item' : '' }}"><a href="{{route("products")}}">Products</a></li>
+								<li><a href="{{ route('contact') }}">Contact</a></li>
+                                <li class="{{ request()->routeIs('guest-order.create') ? 'current-list-item' : '' }}"><a href="{{route("guest-order.create")}}">Order</a></li>
 								<li>
 									<div class="header-icons">
 										<a class="shopping-cart" href="{{route("cart.view")}}"><i class="fas fa-shopping-cart"></i></a>
@@ -31,7 +31,7 @@
                                                     <li class="dropdown-item">
                                                         <form action="{{route("logout")}}" method="post">
                                                             @csrf
-                                                                <button type="submit" class="btn btn-danger btn-block">logout</button>
+                                                                <button type="submit" class="btn btn-danger btn-block">Logout</button>
                                                         </form>
                                                     </li>
 
@@ -39,7 +39,7 @@
                                               </div>
                                         @else
                                             <a href="{{ route('login') }}">Login</a>
-                                            <a href="{{route("register")}}">register</a>
+                                            <a href="{{route("register")}}">Register</a>
                                         @endif
 									</div>
 								</li>

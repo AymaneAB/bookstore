@@ -5,12 +5,16 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GuestOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Statistic;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureUserIsSeller;
 use App\Http\Middleware\EnsureUserIsLibrarian;
 
 
 Route::prefix('dashboard')->name('dashboard.')->middleware(EnsureUserIsSeller::class)->group(function () {
+    //Statistics
+    Route::get('/', [Statistic::class, 'index'])->name('statistic.index');
+
     // products
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
@@ -52,7 +56,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 
-
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');

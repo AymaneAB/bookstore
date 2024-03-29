@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
+						<p>Your Orders</p>
 						<h1>Cart</h1>
 					</div>
 				</div>
@@ -57,13 +57,18 @@
                                         <button type="submit" class="btn btn-danger btn-sm">remove</button>
                                     </form>
                                 </td>
-{{--
-                                <td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td> --}}
+{{--<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td> --}}
                                 <td class="product-name">{{ $details['name'] }}</td>
                                 <td class="product-price">{{ $details['price'] }}</td>
-                                <td class="product-quantity">{{ $details['quantity'] }}</td>
+                                <td class="product-quantity">
+                                    <form action="{{ route('cart.update', $id) }}" method="POST">
+                                        @csrf
+                                        <input type="number" name="quantity" value="{{ $details['quantity'] }}">
+                                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                    </form>
+                                </td>
                             </tr>
-                            @endforeach
+                            @endforeach 
 
                         </tbody>
                     </table>
@@ -94,7 +99,7 @@
 						<div class="cart-buttons">
                             <form action="{{ route('orders.store') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-success btn-lg" style="background-color: #F28123;border-color:#F28123">Checkout</button>
+                                <button type="submit" class="btn btn-success btn-lg" style="background-color: #38419D;border-color:#38419D">Checkout</button>
                             </form>
 						</div>
 

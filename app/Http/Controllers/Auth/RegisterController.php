@@ -28,7 +28,15 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        // Check user type and redirect them accordingly
+        if (auth()->user()->user_type == 'seller') {
+            return '/dashboard/orders';
+        } else {
+            return '/';// Default redirect for other types if any
+        }
+    }
 
     /**
      * Create a new controller instance.

@@ -6,8 +6,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
-						<h1>Shop</h1>
+						<p>What You Are Searching For</p>
+						<h1>Product</h1>
 					</div>
 				</div>
 			</div>
@@ -50,16 +50,23 @@
                 @foreach ($products as $product)
                     <div class="col-lg-4 col-md-6 text-center strawberry">
                         <div class="single-product-item">
+                            @if (!empty($product->image_url))
                             <div class="product-image">
-                                <a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-                            </div>
+                                <a href="single-product.html"><img style="height:150px ;" src="{{ asset("images/".$product->image_url)}}" alt=""></a>
+                            </div> 
+                            @else
+                            <div class="product-image">
+                                <a href="single-product.html"><img style="height:150px ;" src="{{ asset("images/".$product->image_url)}}" alt=""></a>
+                            </div> 
+                            @endif
+                            
                             <h3>{{$product->name}}</h3>
                             <p class="product-price">{{$product->price}} DH</p>
                             <form action="{{ route('cart.add', $product->id) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-primary" style="background-color: #F28123;color:#fff;padding: 10px 20px;"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: #38419D;color:#fff;padding: 10px 20px;"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                             </form>
-                        </div>
+                        </div> 
                     </div>
                 @endforeach
 			</div>

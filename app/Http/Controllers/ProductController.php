@@ -47,11 +47,24 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
-            'category_id' => 'required|integer|exists:categories,id'
+            'category_id' => 'required|integer|exists:categories,id',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Upload image
+        $imageName = time().'.'.$request->image_url->extension();  
+        $request->image_url->move(public_path('images'), $imageName);
 
-        Product::create($validated);
+        // Create product
+        $product = new Product;
+        $product->name = $validated['name'];
+        $product->description = $validated['description'];
+        $product->price = $validated['price'];
+        $product->quantity = $validated['quantity'];
+        $product->category_id = $validated['category_id'];
+        $product->image_url = $imageName;
+        $product->save();
+        //Product::create($validated);
 
         return redirect()->route('dashboard.products.create')->with('success', 'Product added successfully!');
     }

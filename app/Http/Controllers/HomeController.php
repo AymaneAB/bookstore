@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Product; 
+
 
 use Illuminate\Http\Request;
 
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Product::take(3)->get(); // Fetch all products from the database
+        return view('home', compact('products')); // Pass the products data to the view
+        //return view('home');
     }
 }

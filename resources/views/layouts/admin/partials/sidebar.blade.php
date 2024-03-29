@@ -2,11 +2,10 @@
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
-            <span data-feather="home"></span>
-            Dashboard
-          </a>
-        </li>
+          <a class="nav-link {{ request()->routeIs('dashboard.statistic.*') ? 'active' : '' }}" href="{{ route('dashboard.statistic.index') }}">
+            <span data-feather="file"></span>
+            Statistic</a>
+      </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('dashboard.orders.*') ? 'active' : '' }}" href="{{ route('dashboard.orders.index') }}">
               <span data-feather="file"></span>
