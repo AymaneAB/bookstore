@@ -52,7 +52,7 @@
 				<div class="col-lg-8 mb-5 mb-lg-0">
 					<div class="form-title">
 						<h2>Have you any question?</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, ratione! Laboriosam est, assumenda. Perferendis, quo alias quaerat aliquid. Corporis ipsum minus voluptate? Dolore, esse natus!</p>
+						<p>Everything You Need To Get Your Studies Comfortable Is Here!!</p>
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
@@ -75,7 +75,7 @@
 					<div class="contact-form-wrap">
 						<div class="contact-form-box">
 							<h4><i class="fas fa-map"></i> Shop Address</h4>
-							<p>34/8, East Hukupara <br> Gifirtok, Sadan. <br> Country Name</p>
+							<p>UM5 Rabat <br> FSJES Sale<br> Morocco</p>
 						</div>
 						<div class="contact-form-box">
 							<h4><i class="far fa-clock"></i> Shop Hours</h4>
@@ -83,7 +83,7 @@
 						</div>
 						<div class="contact-form-box">
 							<h4><i class="fas fa-address-book"></i> Contact</h4>
-							<p>Phone: +00 111 222 3333 <br> Email: support@adawati.com</p>
+							<p>Phone: +212 111 222 333 <br> Email: support@adawati.com</p>
 						</div>
 					</div>
 				</div>

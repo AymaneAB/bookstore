@@ -126,8 +126,8 @@
                     <div class="col-lg-4 col-md-6 text-center strawberry">
                         <div class="single-product-item">
                             <div class="product-image">
-                                <a href="single-product.html"><img src="{{ asset($product->image_url)}}" alt=""></a>
-                            </div>
+                                <a href="single-product.html"><img style="height:175px ;" src="{{ asset("images/".$product->image_url)}}" alt=""></a>
+                            </div> 
                             <h3>{{$product->name}}</h3>
                             <p class="product-price">{{$product->price}} DH</p>
                             <form action="{{ route('cart.add', $product->id) }}" method="POST">

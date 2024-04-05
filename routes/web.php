@@ -6,6 +6,7 @@ use App\Http\Controllers\GuestOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Statistic;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureUserIsSeller;
 use App\Http\Middleware\EnsureUserIsLibrarian;
@@ -50,7 +51,7 @@ Route::post('/orders/store', [OrderController::class, 'store'])->middleware('aut
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
@@ -60,6 +61,7 @@ Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.
 
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 
 Route::get('/contact', function () {
     return view('contact');

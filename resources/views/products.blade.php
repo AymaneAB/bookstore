@@ -52,7 +52,7 @@
                         <div class="single-product-item">
                             @if (!empty($product->image_url))
                             <div class="product-image">
-                                <a href="single-product.html"><img style="height:150px ;" src="{{ asset("images/".$product->image_url)}}" alt=""></a>
+                                <a href="single-product.html"><img style="height:175px ;" src="{{ asset("images/".$product->image_url)}}" alt=""></a>
                             </div> 
                             @else
                             <div class="product-image">

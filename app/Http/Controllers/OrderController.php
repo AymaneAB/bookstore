@@ -74,9 +74,9 @@ class OrderController extends Controller
         if ($cart) {
             // Create new order
             $totalPrice = 0;
-foreach ($cart as $item) {
-    $totalPrice += $item['price'] * $item['quantity'];
-}
+        foreach ($cart as $item) {
+        $totalPrice += $item['price'] * $item['quantity'];
+        }
 
             $order = new Order();
             $order->user_id = Auth::id(); // or null if guest
