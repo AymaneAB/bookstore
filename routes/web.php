@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Statistic;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactUsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\EnsureUserIsSeller;
@@ -42,6 +43,10 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(EnsureUserIsSeller::c
     Route::get('/guest-orders/{id}/edit', [GuestOrderController::class, 'edit'])->name('guest-orders.edit');
     Route::delete('/guest-orders/{id}', [GuestOrderController::class, 'destroy'])->name('guest-orders.destroy');
     Route::put('/guest-orders/{id}', [GuestOrderController::class, 'update'])->name('guest-orders.update');
+
+    //Contact Us
+    Route::get('/contact-us', [ContactUsController::class, 'adminIndex'])->name('dashboard.contact.index');
+
 });
 
 
@@ -64,6 +69,7 @@ Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+// Route to display all contact form submissions
+Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
+
+Route::get('/contact', [ContactUsController::class, 'showContactForm'])->name('contact');

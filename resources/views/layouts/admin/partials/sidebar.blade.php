@@ -26,6 +26,12 @@
             <span data-feather="shopping-cart"></span>
             Products</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">
+            <span data-feather="file"></span>
+            Contact
+        </a>
+      </li>
         {{-- <li class="nav-item">
           <a class="nav-link" href="#">
             <span data-feather="users"></span>
