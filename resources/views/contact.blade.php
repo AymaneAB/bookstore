@@ -9,7 +9,7 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-	
+
 
 	<!-- search area -->
 	<div class="search-area">
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<!-- end search arewa -->
-	
+
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -54,9 +54,13 @@
 						<h2>Have you any question?</h2>
 						<p>Everything You Need To Get Your Studies Comfortable Is Here!!</p>
 					</div>
-				 	<div id="form_status"></div>
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
 					<div class="contact-form">
-						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+						<form method="POST" action="{{route("contact-us.store")}}">
 							<p>
 								<input type="text" placeholder="Name" name="name" id="name">
 								<input type="email" placeholder="Email" name="email" id="email">
@@ -66,7 +70,8 @@
 								<input type="text" placeholder="Subject" name="subject" id="subject">
 							</p>
 							<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p>
-							<input type="hidden" name="token" value="FsWga4&@f6aw" />
+							{{-- <input type="hidden" name="token" value="FsWga4&@f6aw" /> --}}
+                            @csrf
 							<p><input type="submit" value="Submit"></p>
 						</form>
 					</div>

@@ -54,7 +54,7 @@
 							<h5>Everything You Need To Get Your Studies Comfortable Is Here</h5>
 							<div class="hero-btns">
 								<a href="{{ route('products') }}" class="boxed-btn">Our Products</a>
-								<a href="{{ route('contact') }}" class="bordered-btn">Contact Us</a>
+								<a href="{{ route('contact-us.index') }}" class="bordered-btn">Contact Us</a>
 							</div>
 						</div>
 					</div>
@@ -127,14 +127,14 @@
                         <div class="single-product-item">
                             <div class="product-image">
                                 <a href="single-product.html"><img style="height:175px ;" src="{{ asset("images/".$product->image_url)}}" alt=""></a>
-                            </div> 
+                            </div>
                             <h3>{{$product->name}}</h3>
                             <p class="product-price">{{$product->price}} DH</p>
                             <form action="{{ route('cart.add', $product->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary" style="background-color: #38419D;color:#fff;padding: 10px 20px;"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                             </form>
-                        </div> 
+                        </div>
                     </div>
                 @endforeach
 			</div>

@@ -27,7 +27,7 @@
             Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">
+          <a class="nav-link {{ request()->routeIs('dashboard.contact-us.*') ? 'active' : '' }}" href="{{ route('dashboard.contact-us.index') }}">
             <span data-feather="file"></span>
             Contact
         </a>

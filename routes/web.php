@@ -45,7 +45,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(EnsureUserIsSeller::c
     Route::put('/guest-orders/{id}', [GuestOrderController::class, 'update'])->name('guest-orders.update');
 
     //Contact Us
-    Route::get('/contact-us', [ContactUsController::class, 'adminIndex'])->name('dashboard.contact.index');
+    Route::get('/contact-us', [ContactUsController::class, 'adminIndex'])->name('contact-us.index');
 
 });
 
@@ -70,6 +70,8 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 
 // Route to display all contact form submissions
-Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
+// Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
 
-Route::get('/contact', [ContactUsController::class, 'showContactForm'])->name('contact');
+Route::get('/contact-us', [ContactUsController::class, 'showContactForm'])->name('contact-us.index');
+
+Route::post('/contact/store', [ContactUsController::class, 'store'])->name('contact-us.store');

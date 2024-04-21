@@ -17,9 +17,9 @@
 							<ul>
 								<li class="{{ request()->routeIs('home') ? 'current-list-item' : '' }}"><a href="{{route("home")}}">Home</a></li>
                                 <li class="{{ request()->routeIs('products') ? 'current-list-item' : '' }}"><a href="{{route("products")}}">Products</a></li>
-								<li><a href="{{ route('contact') }}">Contact</a></li>
+								<li><a href="{{ route('contact-us.index') }}">Contact</a></li>
                                 <li class="{{ request()->routeIs('guest-order.create') ? 'current-list-item' : '' }}"><a href="{{route("guest-order.create")}}">Order</a></li>
-								<li> 
+								<li>
 									<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									<div class="mobile-menu"></div>
 								</li>

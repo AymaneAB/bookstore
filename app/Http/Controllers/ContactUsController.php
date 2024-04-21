@@ -44,4 +44,20 @@ class ContactUsController extends Controller
     {
         return view('contact'); // Assurez-vous d'avoir une vue nommée 'contact'
     }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'email',
+            'phone' => 'required',
+            'message' => 'required',
+            'subject' => 'required',
+        ]);
+
+
+        ContactUs::create($validated);
+
+        return redirect()->route('contact-us.index')->with('success', 'Your message has been submitted successfully!');
+    }
 }
